@@ -4,6 +4,8 @@
   "description": "this is for React mastery",
   "main": "App.js",
   "scripts": {
+    "start": "npx parcel index.html",
+    "build": "parcel buil index.html",
     "test": "jest"
   },
   "repository": {
