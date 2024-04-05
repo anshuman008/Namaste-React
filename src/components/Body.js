@@ -13,6 +13,17 @@ const [searchText, setSeachText] = useState("");
 console.log('renderedd');
   const getData = async () => {
     try {
+
+      // This Runs Without Cors Plugin 
+
+      // const result = await axios.get(
+      //   "https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.61450&lng=77.30630&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",{
+      //     headers: {
+      //     'x-cors-api-key': 'temp_401e3ce91a82fc8b12b796883eab4672'
+      //     }
+      //   }
+      // );
+
       const result = await axios.get(
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.61450&lng=77.30630&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
@@ -20,6 +31,8 @@ console.log('renderedd');
       const restraurnData =
         result?.data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
+          // console.log( result?.data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          //   ?.restaurants[0])
       setData(restraurnData);
       setAllResturantData(restraurnData);
     } catch (e) {
@@ -27,8 +40,25 @@ console.log('renderedd');
     }
   };
 
+  const getMoreData = async() =>{
+    try {
+      const response = await axios.post('https://www.swiggy.com/dapi/restaurants/list/update', {
+        lat: "28.61450",
+        lng: "77.30630",
+        nextOffset: "COVCELQ4KIDgsqyLnpXBBzCnEzgC",
+      });
+  
+      // Process the response data as needed
+      console.log(response.data);
+    } catch (error) {
+      // Handle any errors here
+      console.error('Error fetching data:', error);
+    }
+  }
+
   useEffect(() => {
     getData();
+    // getMoreData();
   }, []);
 
   function filterData() {
@@ -68,8 +98,8 @@ console.log('renderedd');
       </div>
 
       <div className="Card-Container">
-        {data?.map((restorant) => {
-          return <ResCard key={restorant.info.id} resData={restorant.info} />;
+        {data?.map((restorant,index) => {
+          return <ResCard key={restorant.info.id} resData={restorant.info} index = {index} />;
         })}
       </div>
     </div>

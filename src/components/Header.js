@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { LOGO_URL } from "../utils/constants"
+import { Link } from "react-router-dom";
 
  const HeaderComp = () => {
 
@@ -15,13 +16,18 @@ import { LOGO_URL } from "../utils/constants"
            <div  className="nav-items">
             <ul>
                 <li>
-                    Home
+                    <Link to={'/'} className="Link-div" >
+                     Home
+                    </Link>
                 </li>
                 <li>
-                    About Us
+                  <Link to='about' className="Link-div" >
+                  About Us</Link>
                 </li>
                 <li>
+                    <Link to={'/contact'} className="Link-div" >
                     Contact Us
+                    </Link>
                 </li>
                 <li>
                     Cart

@@ -1,0 +1,71 @@
+.restaurant-details-container {
+    background: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .restaurant-name {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .restaurant-info {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .restaurant-area, .restaurant-rating, .restaurant-cost, .restaurant-cuisines {
+    margin: 5px 0;
+  }
+  .res-details-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    background: white;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+  
+  .res-rating-cost,
+  .res-cuisines,
+  .res-location-time,
+  .res-delivery {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  
+  .res-rating {
+    color: #4CAF50; /* Adjust the color to match the rating color in the image */
+    font-weight: bold;
+  }
+  
+  .res-cost {
+    color: #666; /* Adjust the color to match the cost color in the image */
+  }
+  
+  .res-cuisines {
+    color: #ff5722; /* Adjust the color to match the cuisines color in the image */
+    font-weight: bold;
+  }
+  
+  .res-location {
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .res-time {
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .res-delivery {
+    font-size: 0.8rem;
+    color: #757575; /* Adjust the color to match the delivery info color in the image */
+  }
+  

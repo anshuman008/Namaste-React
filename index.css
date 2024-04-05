@@ -61,7 +61,7 @@
 }
 
 .res-card:hover{
-    box-shadow: 0 0 10px #ffffff;
+    box-shadow: 0 0 10px #000;
     cursor: pointer;
     /* transform: scale(1.1);
     transition: all 0.5s ease-in-out; */
@@ -69,10 +69,12 @@
 
 .search-section{
     display: flex;
-    background-color: rgb(255, 0, 0);
+    height: 50px;
+    background-color: grey;
     justify-content: center;
     align-items: center;
     justify-content: space-around;
+    border-radius: 20;
 }
 
 .shimmer-container{
@@ -122,9 +124,22 @@
 }
 
 .top-rated{
+    border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 5px;
     margin-left: 5px;
+}
+
+.Link-div{
+    text-decoration: none;
+    color: black;
+}
+
+.Link-div:hover{
+    color: grey;
+}
+.divlink{
+    text-decoration: none;
 }

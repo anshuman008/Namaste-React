@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
 import { CDN_URL } from "../utils/constants";
 
  const ResCard=(props)=>{
     // console.log(props.variety)
     const {resData} = props;
-    const {cloudinaryImageId,name,cuisines,avgRating,areaName} = resData;
+    const {cloudinaryImageId,name,cuisines,avgRating,areaName,id} = resData;
     return(
+        <Link className="divlink" to={`/res/${id}`}>
         <div className="res-card">
            <div className="image-box">
            <img className="res-image" alt="res-image" 
@@ -16,6 +18,7 @@ import { CDN_URL } from "../utils/constants";
           <h4>{resData.sla.deliveryTime} minutes</h4>
           <h5>location: {areaName}</h5>
         </div>
+        </Link>
     )
 }
 
