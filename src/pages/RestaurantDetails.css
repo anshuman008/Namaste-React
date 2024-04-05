@@ -69,3 +69,33 @@
     color: #757575; /* Adjust the color to match the delivery info color in the image */
   }
   
+  .MenuDivCard{
+    height: 200px;
+    width: 40vw;
+    margin: 10px;
+    margin-bottom: 15;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+  }
+
+  .resTaurantimage-image{
+    width: 100%;
+    height:200px;
+    object-fit: cover;
+    object-position: center+55%;
+
+}
+
+.destails-div{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+    flex-direction: column;
+}

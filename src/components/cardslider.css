@@ -1,0 +1,47 @@
+.slick-slide > div {
+    margin: 0 10px;
+}
+
+.main-div {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    width: 200px;
+    margin: 10px;
+    flex-direction: column;
+    /* Additional styles for padding, borders, etc. */
+}
+
+.slick-next {
+    color: black; /* Color of the arrow */
+ 
+    /* right: 10px; */
+    border-radius: 7px;
+    z-index: 1;
+}
+
+.slick-prev {
+    color: black; /* Color of the arrow */
+     /* Background color of the button */
+    /* left: 10px; */
+    z-index: 2;
+    border-radius: 7px;
+}
+
+.slick-next::before, .slick-prev::before {
+    color: black; /* Arrow color */
+}
+.resTaurantimage-image{
+    width: 100%;
+    height:200px;
+    object-fit: cover;
+    object-position: center+55%;
+
+}
+/* Additional styles for padding, borders, or shadows to .card */

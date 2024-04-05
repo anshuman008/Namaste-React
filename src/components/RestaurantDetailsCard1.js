@@ -1,5 +1,7 @@
 import React from 'react'
 import './RestaurantDetailsCard1.css'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { CDN_URL } from '../utils/constants';
 
 
@@ -12,6 +14,7 @@ const RestaurantDetailsCard1 = (props) => {
     const {minDeliveryTime,maxDeliveryTime} = resInfo.sla;
 
     const {message} = resInfo.feeDetails;
+    
   return (
     <div className="res-details-card">
       
