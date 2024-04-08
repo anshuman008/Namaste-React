@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { LOGO_URL } from "../utils/constants"
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
  const HeaderComp = () => {
 
@@ -9,12 +10,19 @@ import { Link } from "react-router-dom";
         if(text === 'Login') settext('Logout');
         else settext('Login');
     }
+
+
+    const onlinestatus = useOnlineStatus();
+
     return(
         <div  className="header" style={{color:"white"}}>
            <img  className="logo" src={LOGO_URL}/>
            
            <div  className="nav-items">
             <ul>
+                <li className="Link-div">
+                    Online: {onlinestatus? "✅": "🔴"}
+                </li>
                 <li>
                     <Link to={'/'} className="Link-div" >
                      Home

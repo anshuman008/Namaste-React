@@ -1,45 +1,32 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Shimmer from "../components/Shimmer";
 import "./RestaurantDetails.css"; // Assuming you have a CSS file for styling
 import RestaurantDetailsCard1 from "../components/RestaurantDetailsCard1";
 import ResDeatilsShimmer from "../components/ResDeatilsShimmer";
 import CardSlider from "../components/CardSlider";
-import MenuList from "../components/MenuList";
 import { CDN_URL } from "../utils/constants";
+import { MENU_API } from "../utils/constants";
+import useRestaurant from "../utils/useRestauranthook.JS";
 
 const RestaurantDetails = () => {
-  const [resInfo, setResInfo] = useState(null);
   const { id } = useParams();
 
-  useEffect(() => {
-    getRestaurantData();
-  }, []);
+ const resInfo = useRestaurant(id,'menu');
 
-  const getRestaurantData = async () => {
-    try {
-      const result = await axios.get(
-        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.61450&lng=77.30630&restaurantId=${id}&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER`
-      );
-      setResInfo(result?.data?.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  if (resInfo === null || resInfo === undefined) return <ResDeatilsShimmer />;
 
-  if (resInfo === null) return <ResDeatilsShimmer />;
 
-  const { title, carousel } =
+  const {title, carousel } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
   const { itemCards } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
-  console.log(itemCards[0]?.card?.info);
+  console.log(itemCards);
 
-  const { name } =
-    resInfo === undefined ? "" : resInfo?.cards[2]?.card?.card?.info;
+  const { name } = resInfo === undefined ? "": resInfo?.cards[2]?.card?.card?.info;
+    
   return (
     <div className="restaurant-details-container">
       <h1 className="restaurant-name">Welcome to {name}</h1>
@@ -58,12 +45,13 @@ const RestaurantDetails = () => {
               <div className="destails-div">
                 <h2>{res?.card?.info?.name}</h2>
 
-                <span>$ {res?.card?.info?.defaultPrice / 10}</span>
+                <span>$ { res?.card?.info?.defaultPrice/100 || res?.card?.info?.price/100 }</span>
 
                 <div>
                   <span>
-                    {res?.card?.info.ratings.aggregatedRating.rating} (
-                    {res?.card?.info.ratings.aggregatedRating.ratingCountV2})
+                    {res?.card?.info.ratings.aggregatedRating.rating}
+                    {res?.card?.info.ratings.aggregatedRating.ratingCountV2 && `(
+${res?.card?.info.ratings.aggregatedRating.ratingCountV2})`}
                   </span>
                 </div>
 

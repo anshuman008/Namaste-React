@@ -2,13 +2,14 @@ import ResCard from "./ResCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Shimmer from "./Shimmer";
+import { SWIGGY_API } from "../utils/constants";
 
 export const BodyComp = () => {
   // imoting data from live data
 
   const [allResturantData, setAllResturantData] = useState([]);
   const [data, setData] = useState(allResturantData);
-const [searchText, setSeachText] = useState("");
+  const [searchText, setSeachText] = useState("");
 
 console.log('renderedd');
   const getData = async () => {
@@ -24,9 +25,7 @@ console.log('renderedd');
       //   }
       // );
 
-      const result = await axios.get(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.61450&lng=77.30630&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
+      const result = await axios.get(SWIGGY_API);
 
       const restraurnData =
         result?.data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
