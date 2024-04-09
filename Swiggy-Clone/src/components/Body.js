@@ -70,13 +70,15 @@ console.log('renderedd');
     <Shimmer />
   ) : (
     <div className="body-Conatiner">
-      <div className="search-section">
-        <div style={{display:'flex', alignItems:'center',justifyContent:'center'}}>
-          <button className="top-rated" onClick={filterData}>
+
+      <div className="flex items-center justify-around px-10 py-5">
+
+        <div className="flex gap-5">
+          <button className="bg-blue-400 px-3 py-1 rounded-md text-white" onClick={filterData}>
             Top Rated
           </button>
           <button
-            className="top-rated"
+          className="bg-blue-400 px-3 py-1 rounded-md text-white"
             onClick={() => {
               setData(allResturantData);
             }}
@@ -85,18 +87,19 @@ console.log('renderedd');
           </button>
         </div>
 
-        <div className="searchBox">
-          <input className="searchInput" type="text" placeholder="Search Here" onChange={(e)=>{setSeachText(e.target.value)}} value={searchText} />
-          <button className="search-btn" onClick={()=>{
+        <div className="flex items-center justify-center gap-4">
+          <input className="flex items-center px-4 py-1 rounded-sm border border-solid border-black border-" type="text" placeholder="Search Here" onChange={(e)=>{setSeachText(e.target.value)}} value={searchText} />
+          <button className="py-1 px-3 bg-blue-400 rounded-md text-white" onClick={()=>{
              const filterdResurant = allResturantData.filter((res)=>res?.info?.name?.toLowerCase()?.includes(searchText.toLowerCase()));
              console.log(allResturantData[0].info.name);
              console.log(filterdResurant,'filter data hai yah',searchText);
              setData(filterdResurant);
           }}>Search</button>
         </div>
+
       </div>
 
-      <div className="Card-Container">
+      <div className=" flex flex-wrap items-center justify-center">
         {data?.map((restorant,index) => {
           return <ResCard key={restorant.info.id} resData={restorant.info} index = {index} />;
         })}

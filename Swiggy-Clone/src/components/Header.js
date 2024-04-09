@@ -15,29 +15,32 @@ import useOnlineStatus from "../utils/useOnlineStatus";
     const onlinestatus = useOnlineStatus();
 
     return(
-        <div  className="header" style={{color:"white"}}>
-           <img  className="logo" src={LOGO_URL}/>
+        <div className="flex items-center justify-between pl-2 pr-4 shadow-lg mb-2">
+
+            <div  >
+              <img  className="w-24" src={LOGO_URL}/>
+            </div>
            
-           <div  className="nav-items">
-            <ul>
-                <li className="Link-div">
+           <div  >
+            <ul className="flex gap-10 items-center">
+                <li  className="cursor-pointer">
                     Online: {onlinestatus? "✅": "🔴"}
                 </li>
-                <li>
-                    <Link to={'/'} className="Link-div" >
+                <li className="cursor-pointer hover:text-slate-500">
+                    <Link to={'/'} >
                      Home
                     </Link>
                 </li>
-                <li>
-                  <Link to='about' className="Link-div" >
+                <li className="cursor-pointer hover:text-slate-500">
+                  <Link to='about'  >
                   About Us</Link>
                 </li>
-                <li>
-                    <Link to={'/contact'} className="Link-div" >
+                <li className="cursor-pointer hover:text-slate-500">
+                    <Link to={'/contact'}  >
                     Contact Us
                     </Link>
                 </li>
-                <li>
+                <li className="cursor-pointer hover:text-slate-500">
                     Cart
                 </li>
                 <li>
@@ -45,6 +48,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
                 </li>
             </ul>
            </div>
+
         </div>
     )
   }
