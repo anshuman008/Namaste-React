@@ -93,8 +93,8 @@ console.log('renderedd');
           <input className="flex items-center px-4 py-1 rounded-sm border border-solid border-black border-" type="text" placeholder="Search Here" onChange={(e)=>{setSeachText(e.target.value)}} value={searchText} />
           <button className="py-1 px-3 bg-blue-400 rounded-md text-white" onClick={()=>{
              const filterdResurant = allResturantData.filter((res)=>res?.info?.name?.toLowerCase()?.includes(searchText.toLowerCase()));
-             console.log(allResturantData[0].info.name);
-             console.log(filterdResurant,'filter data hai yah',searchText);
+            //  console.log(allResturantData[0].info.name);
+            //  console.log(filterdResurant,'filter data hai yah',searchText);
              setData(filterdResurant);
           }}>Search</button>
         </div>
@@ -103,8 +103,8 @@ console.log('renderedd');
 
       <div className="flex flex-wrap items-center justify-center">
         {data?.map((restorant,index) => {
-          return restorant.isOpen? ( <ResCard key={restorant.info.id} resData={restorant.info} index = {index} />) :(
-            <RestCardWithOpenLable key={restorant.info.id} resData={restorant.info} index = {index}/>
+          return restorant.isOpen? (<RestCardWithOpenLable key={restorant.info.id} resData={restorant.info} index = {index}/>) :(
+            <ResCard key={restorant.info.id} resData={restorant.info} index = {index} />
           );
         })}
       </div>

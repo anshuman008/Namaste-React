@@ -9,7 +9,7 @@ import { starLogo } from "../assests/assets";
     
     const {slaString} = resData.sla;
 
-    console.log(resData);
+    // console.log(resData);
       // Function to format the cuisines array
       const formatCuisines = (cuisines) => {
         if (cuisines.length > 3) {
@@ -20,7 +20,7 @@ import { starLogo } from "../assests/assets";
     };
     return(
         <Link className="" to={`/res/${id}`}>
-        <div className=" m-4 w-[250px] h-[400x]">
+        <div className=" m-4 w-[250px] h-[400x] hover:scale-90 transition-all ease-in-out duration-500">
 
            <div className="overflow-hidden rounded-xl h-[220px] w-[250px]">
            <img className="rounded-xl" alt="res-image" 
@@ -51,7 +51,7 @@ export const withOpenLable = (ResCard) =>{
     return  (props) =>{
        return (
      <div className="hover:scale-90 transition-all ease-in-out duration-500">
-        <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Open 🟢</label>
+        {/* <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Open 🟢</label> */}
         <ResCard {...props}/>
      </div>
        )

@@ -5,9 +5,8 @@ import "./RestaurantDetails.css"; // Assuming you have a CSS file for styling
 import RestaurantDetailsCard1 from "../components/RestaurantDetailsCard1";
 import ResDeatilsShimmer from "../components/ResDeatilsShimmer";
 import CardSlider from "../components/CardSlider";
-import { CDN_URL } from "../utils/constants";
-import { MENU_API } from "../utils/constants";
 import useRestaurant from "../utils/useRestauranthook.JS";
+import RestaurantCategoreies from "../components/RestaurantCategories";
 
 const RestaurantDetails = () => {
   const { id } = useParams();
@@ -23,13 +22,22 @@ const RestaurantDetails = () => {
   const { itemCards } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
-  console.log(itemCards);
+
+    // consoling all data values
+
+  //  resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.map((mp) => (
+  //   console.log(mp.card?.card?.["@type"])
+  //  ))
+
+  const itemsFilterCategories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c =>c.card?.card?.["@type"] === 'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory');
+
+  // console.log(itemsFilterCategories);
 
   const { name } = resInfo === undefined ? "": resInfo?.cards[2]?.card?.card?.info;
     
   return (
-    <div className="restaurant-details-container">
-      <h1 className="restaurant-name">Welcome to {name}</h1>
+    <div className="flex items-center justify-center flex-col">
+      <h1>Welcome to {name}</h1>
       <RestaurantDetailsCard1 resInfo={resInfo?.cards[2]?.card?.card?.info} />
       <div style={{ height: 30 }}></div>
       {title !== "Recommended" && (
@@ -38,32 +46,10 @@ const RestaurantDetails = () => {
 
       <div style={{ marginTop: "30px" }}>
         <h2>Menu Items</h2>
-
         <div>
-          {itemCards?.map((res, index) => (
-            <div key={index} className="MenuDivCard">
-              <div className="destails-div">
-                <h2>{res?.card?.info?.name}</h2>
-
-                <span>$ { res?.card?.info?.defaultPrice/100 || res?.card?.info?.price/100 }</span>
-
-                <div>
-                  <span>
-                    {res?.card?.info.ratings.aggregatedRating.rating}
-                    {res?.card?.info.ratings.aggregatedRating.ratingCountV2 && `(
-${res?.card?.info.ratings.aggregatedRating.ratingCountV2})`}
-                  </span>
-                </div>
-
-                <div>
-                  <h5>{res?.card?.info.description}</h5>
-                </div>
-              </div>
-
-              <div>
-              <img className="resTaurantimage-image" alt="res-image" 
-                   src={CDN_URL+res?.card?.info?.imageId}/>
-                </div>
+          {itemsFilterCategories?.map((res, index) => (
+           <div key={index}>
+                 <RestaurantCategoreies restaurantData = {res.card.card} />
             </div>
           ))}
         </div>
