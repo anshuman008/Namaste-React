@@ -2,12 +2,11 @@ import { CDN_URL } from "../utils/constants";
 import { starLogo } from "../assests/assets";
 const VerticalCards = ({ resDtat }) => {
     // Debugging line to see the data received
-    console.log(resDtat);
 
     return (
         <div className="flex items-center justify-between w-[50vw] rounded-lg m-4 p-2 border-gray-200 border-b-2">
 
-            <div className="px-3 flex flex-col justify-center">
+            <div className="px-3 flex flex-col justify-center w-9/12">
                 <h2 className="font-bold">{resDtat.info?.name}</h2>
                 <span>₹ {resDtat?.info?.defaultPrice / 100 || resDtat?.info?.price / 100}</span>
                 <div className="flex items-center"> 
@@ -23,9 +22,13 @@ const VerticalCards = ({ resDtat }) => {
                     </p>
             </div>
 
-            <div className="flex-none overflow-hidden rounded-xl" style={{ height: '180px', width: '250px' }}>
+            <div className="w-3/12 relative">
+
+                <div className="absolute top-0 right-0">
+                    <button className="p-2 bg-white shadow-lg m-auto rounded-md font-bold text-green-500">Add+</button>
+                </div>
                 <img
-                    className="h-full w-full object-cover"
+                    className="w-full h-auto"
                     alt="res-image"
                     src={CDN_URL + resDtat?.info?.imageId}
                 />

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constants"
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/userContext";
 
  const HeaderComp = () => {
 
@@ -13,6 +14,9 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
 
     const onlinestatus = useOnlineStatus();
+    
+    const data= useContext(UserContext);
+       
 
     return(
         <div className="flex items-center justify-between pl-2 pr-4 shadow-lg mb-2">
@@ -41,7 +45,10 @@ import useOnlineStatus from "../utils/useOnlineStatus";
                     </Link>
                 </li>
                 <li className="cursor-pointer hover:text-slate-500">
-                    Cart
+                    Cart 
+                </li>
+                <li>
+                {data.UserName}
                 </li>
                 <li>
                     <button style={{height:'35px', width:'100px',border:'0',background:'grey',color:'white', cursor:'pointer',borderRadius:10}} onClick={()=>{changeAuth()}}>{text}</button>

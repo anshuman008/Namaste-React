@@ -12,6 +12,7 @@ const RestaurantDetails = () => {
   const { id } = useParams();
 
  const resInfo = useRestaurant(id,'menu');
+ const [showList,setShowList] = useState(0);
 
   if (resInfo === null || resInfo === undefined) return <ResDeatilsShimmer />;
 
@@ -49,7 +50,7 @@ const RestaurantDetails = () => {
         <div>
           {itemsFilterCategories?.map((res, index) => (
            <div key={index}>
-                 <RestaurantCategoreies restaurantData = {res.card.card} />
+                 <RestaurantCategoreies showList={showList===index?true:false} setShowList = {() => {setShowList(index)}} restaurantData = {res.card.card} intialOpen = {index === 0?true:false} />
             </div>
           ))}
         </div>

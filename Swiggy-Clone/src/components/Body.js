@@ -1,8 +1,9 @@
 import ResCard , {withOpenLable}from "./ResCard";
-import { useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Shimmer from "./Shimmer";
 import { SWIGGY_API } from "../utils/constants";
+import UserContext from "../utils/userContext";
 
 export const BodyComp = () => {
   // imoting data from live data
@@ -11,6 +12,9 @@ export const BodyComp = () => {
   const [data, setData] = useState(allResturantData);
   const [searchText, setSeachText] = useState("");
 
+  const {UserName,setName} = useContext(UserContext);
+
+// console.log(setName)
 const RestCardWithOpenLable = withOpenLable(ResCard);
 
 console.log('renderedd');
@@ -99,6 +103,9 @@ console.log('renderedd');
           }}>Search</button>
         </div>
 
+        <div className="flex items-center justify-center gap-4">
+          <input className="flex items-center px-4 py-1 rounded-sm border border-solid border-black border-" type="text" placeholder="Set Name" onChange={(e)=>{setName(e.target.value)}} value={UserName} />
+        </div>
       </div>
 
       <div className="flex flex-wrap items-center justify-center">
