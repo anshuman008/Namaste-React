@@ -1,4 +1,4 @@
-import ResCard from "./ResCard";
+import ResCard , {withOpenLable}from "./ResCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Shimmer from "./Shimmer";
@@ -10,6 +10,8 @@ export const BodyComp = () => {
   const [allResturantData, setAllResturantData] = useState([]);
   const [data, setData] = useState(allResturantData);
   const [searchText, setSeachText] = useState("");
+
+const RestCardWithOpenLable = withOpenLable(ResCard);
 
 console.log('renderedd');
   const getData = async () => {
@@ -99,9 +101,11 @@ console.log('renderedd');
 
       </div>
 
-      <div className=" flex flex-wrap items-center justify-center">
+      <div className="flex flex-wrap items-center justify-center">
         {data?.map((restorant,index) => {
-          return <ResCard key={restorant.info.id} resData={restorant.info} index = {index} />;
+          return restorant.isOpen? ( <ResCard key={restorant.info.id} resData={restorant.info} index = {index} />) :(
+            <RestCardWithOpenLable key={restorant.info.id} resData={restorant.info} index = {index}/>
+          );
         })}
       </div>
     </div>
