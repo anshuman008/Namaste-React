@@ -32,7 +32,8 @@ console.log('renderedd');
       // );
 
       const result = await axios.get(SWIGGY_API);
-
+       
+      
       const restraurnData =
         result?.data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
@@ -72,7 +73,7 @@ console.log('renderedd');
     setData(newArr);
   }
 
-  return data.length === 0 ? (
+  return data?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body-Conatiner">

@@ -38,7 +38,7 @@ const RestaurantDetails = () => {
     
   return (
     <div className="flex items-center justify-center flex-col">
-      <h1>Welcome to {name}</h1>
+      <h1 className="font-bold text-xl my-2">Welcome to {name}</h1>
       <RestaurantDetailsCard1 resInfo={resInfo?.cards[2]?.card?.card?.info} />
       <div style={{ height: 30 }}></div>
       {title !== "Recommended" && (
@@ -46,7 +46,7 @@ const RestaurantDetails = () => {
       )}
 
       <div style={{ marginTop: "30px" }}>
-        <h2>Menu Items</h2>
+        <h2 className="font-bold text-xl">Menu Items</h2>
         <div>
           {itemsFilterCategories?.map((res, index) => (
            <div key={index}>

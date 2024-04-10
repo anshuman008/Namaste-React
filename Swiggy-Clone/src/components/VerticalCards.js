@@ -1,7 +1,22 @@
 import { CDN_URL } from "../utils/constants";
 import { starLogo } from "../assests/assets";
-const VerticalCards = ({ resDtat }) => {
+import {addItem,removeItem} from "../utils/slices/cartSlice";
+import {useDispatch} from 'react-redux';
+
+const VerticalCards = ({ resDtat , cartPage}) => {
     // Debugging line to see the data received
+   
+    const dispatch = useDispatch();
+    
+
+    const handleAddItems = ()=>{
+            dispatch(addItem(resDtat));
+    }
+
+    const handleRemovetem = () =>{
+          dispatch(removeItem(resDtat));
+    }
+
 
     return (
         <div className="flex items-center justify-between w-[50vw] rounded-lg m-4 p-2 border-gray-200 border-b-2">
@@ -25,7 +40,9 @@ const VerticalCards = ({ resDtat }) => {
             <div className="w-3/12 relative">
 
                 <div className="absolute top-0 right-0">
-                    <button className="p-2 bg-white shadow-lg m-auto rounded-md font-bold text-green-500">Add+</button>
+                    <button className="p-2 bg-white shadow-lg m-auto rounded-md font-bold text-green-500" onClick={ 
+                      cartPage?handleRemovetem:handleAddItems
+                    }>{cartPage?'Remove-':'Add+'}</button>
                 </div>
                 <img
                     className="w-full h-auto"

@@ -16,7 +16,7 @@ const CardSlider = (props) => {
 
   return (
     <div className="main-div">
-        <h1>
+        <h1 className="font-bold text-xl">
         {title}
         </h1>
       <Slider {...settings}>
@@ -28,7 +28,7 @@ const CardSlider = (props) => {
                    src={CDN_URL+res?.dish?.info?.imageId}/>
                 </div>
                 <div>
-                     <h5>{res.title}</h5>
+                     <h5 className="font-bold ">{res.title}</h5>
                 </div>
             </div>
           </div>

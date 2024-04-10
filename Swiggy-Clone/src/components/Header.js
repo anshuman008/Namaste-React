@@ -3,7 +3,7 @@ import { LOGO_URL } from "../utils/constants"
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/userContext";
-
+import {useSelector} from "react-redux"
  const HeaderComp = () => {
 
     const [text,settext] = useState('Login');
@@ -16,10 +16,11 @@ import UserContext from "../utils/userContext";
     const onlinestatus = useOnlineStatus();
     
     const data= useContext(UserContext);
-       
+    const cartItems = useSelector((store) => store.cart.items);
+    // console.log(cartItems);
 
     return(
-        <div className="flex items-center justify-between pl-2 pr-4 shadow-lg mb-2">
+        <div className="flex items-center justify-between pl-2 pr-4 shadow-lg mb-2 sticky top-0 z-50 bg-white">
 
             <div  >
               <img  className="w-24" src={LOGO_URL}/>
@@ -44,8 +45,11 @@ import UserContext from "../utils/userContext";
                     Contact Us
                     </Link>
                 </li>
-                <li className="cursor-pointer hover:text-slate-500">
-                    Cart 
+                
+                <li className="cursor-pointer hover:text-slate-500 font-bold text-xl" >
+                      <Link to={'/res/cart'} >
+                  Cart ({cartItems.length} items)
+                    </Link>
                 </li>
                 <li>
                 {data.UserName}
