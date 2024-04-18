@@ -23,23 +23,24 @@ console.log('renderedd');
 
       // This Runs Without Cors Plugin 
 
-      // const result = await axios.get(
-      //   "https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.61450&lng=77.30630&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",{
-      //     headers: {
-      //     'x-cors-api-key': 'temp_401e3ce91a82fc8b12b796883eab4672'
-      //     }
-      //   }
-      // );
+      const result = await axios.get(
+        "https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.61450&lng=77.30630&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",{
+          headers: {
+          'x-cors-api-key': 'temp_401e3ce91a82fc8b12b796883eab4672'
+          }
+        }
+      );
 
-      const result = await axios.get(SWIGGY_API);
+      // const result = await axios.get(SWIGGY_API);
        
       
       const restraurnData =
-        result?.data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        result?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
           // console.log( result?.data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           //   ?.restaurants[0])
       setData(restraurnData);
+      console.log(result.data.data.cards[1])
       setAllResturantData(restraurnData);
     } catch (e) {
       console.log(e, "error");
@@ -109,7 +110,8 @@ console.log('renderedd');
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-center">
+      <div className="flex flex-wrap items-center justify-center gap-5 max-w-[1200px] mx-auto">
+
         {data?.map((restorant,index) => {
           return restorant.isOpen? (<RestCardWithOpenLable key={restorant.info.id} resData={restorant.info} index = {index}/>) :(
             <ResCard key={restorant.info.id} resData={restorant.info} index = {index} />
